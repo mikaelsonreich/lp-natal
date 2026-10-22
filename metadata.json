@@ -1,0 +1,6 @@
+{
+  "name": "+250 Moldes de Natal para Bordados de Papel",
+  "description": "Página de vendas moderna e profissional com +250 moldes natalinos para bordados de papel. Acesso imediato a templates em alta resolução, cartões, tags, enfeites e guias passo a passo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

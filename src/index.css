@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Subtle paper texture highlight */
+.paper-pattern {
+  background-color: #FAF8F5;
+  background-image: radial-gradient(#d6cfc7 0.75px, transparent 0.75px), radial-gradient(#d6cfc7 0.75px, #FAF8F5 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F2EC;
+}
+::-webkit-scrollbar-thumb {
+  background: #D5CEBE;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8B09E;
+}
