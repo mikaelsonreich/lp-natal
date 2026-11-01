@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TopRibbon } from './components/TopRibbon';
 import { HeroSection } from './components/HeroSection';
 import { WhatYouGetSection } from './components/WhatYouGetSection';
@@ -16,6 +16,10 @@ import { Sparkles, ArrowRight, ShieldCheck, Gift } from 'lucide-react';
 export default function App() {
   const [lightboxItem, setLightboxItem] = useState<MoldeItem | null>(null);
   const [customLightboxImage, setCustomLightboxImage] = useState<{ src: string; title: string } | null>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const scrollToOffers = () => {
     const el = document.getElementById('ofertas');

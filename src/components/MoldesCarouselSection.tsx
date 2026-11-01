@@ -54,6 +54,7 @@ const TEMPLATES: TemplateItem[] = [
 export const MoldesCarouselSection: React.FC<MoldesCarouselSectionProps> = ({ onScrollToOffers }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   // 5-minute countdown timer (300 seconds)
   const [secondsLeft, setSecondsLeft] = useState<number>(300);
@@ -84,12 +85,18 @@ export const MoldesCarouselSection: React.FC<MoldesCarouselSectionProps> = ({ on
     setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : 0));
   };
 
-  // Scroll to active card when index changes
+  // Scroll active card inside container ONLY on user interaction (never on mount, never touches window scroll)
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     if (scrollContainerRef.current) {
       const card = scrollContainerRef.current.children[currentIndex] as HTMLElement;
       if (card) {
-        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        const container = scrollContainerRef.current;
+        const targetScroll = card.offsetLeft - (container.clientWidth - card.clientWidth) / 2;
+        container.scrollTo({ left: targetScroll, behavior: 'smooth' });
       }
     }
   }, [currentIndex]);
@@ -133,10 +140,10 @@ export const MoldesCarouselSection: React.FC<MoldesCarouselSectionProps> = ({ on
             <ChevronRight className="w-6 h-6 stroke-[2.5]" />
           </button>
 
-          {/* Cards Track with smooth scrolling */}
+          {/* Cards Track with standard horizontal scrolling without snap or viewport hijacking */}
           <div
             ref={scrollContainerRef}
-            className="flex items-center gap-4 sm:gap-6 overflow-x-auto py-4 px-2 no-scrollbar scroll-smooth snap-x snap-mandatory"
+            className="flex items-center gap-4 sm:gap-6 overflow-x-auto py-4 px-2 no-scrollbar"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {TEMPLATES.map((item, idx) => {
@@ -145,7 +152,7 @@ export const MoldesCarouselSection: React.FC<MoldesCarouselSectionProps> = ({ on
                 <div
                   key={item.id}
                   onClick={() => setCurrentIndex(idx)}
-                  className={`snap-center shrink-0 w-[240px] sm:w-[270px] md:w-[290px] rounded-2xl bg-white border transition-all duration-300 cursor-pointer overflow-hidden flex flex-col justify-between ${
+                  className={`shrink-0 w-[240px] sm:w-[270px] md:w-[290px] rounded-2xl bg-white border transition-all duration-300 cursor-pointer overflow-hidden flex flex-col justify-between ${
                     isActive
                       ? 'border-[#15803D] shadow-xl ring-2 ring-[#15803D]/20 scale-[1.02]'
                       : 'border-slate-200/90 shadow-md hover:border-slate-300 opacity-80 hover:opacity-100'
