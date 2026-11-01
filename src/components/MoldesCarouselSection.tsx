@@ -207,9 +207,9 @@ export const MoldesCarouselSection: React.FC<MoldesCarouselSectionProps> = ({ on
 
         {/* Fita Amarelo-Ouro com Cronômetro de Urgência */}
         <div className="mt-8 max-w-4xl mx-auto">
-          <div
-            onClick={onScrollToOffers}
-            className="rounded-2xl p-3.5 sm:p-4 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 border border-amber-300 shadow-lg shadow-amber-400/25 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-950 transition-transform hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+          <a
+            href="https://pay.wiapy.com/8mJj6lBTqYZo"
+            className="rounded-2xl p-3.5 sm:p-4 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 border border-amber-300 shadow-lg shadow-amber-400/25 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-950 transition-transform hover:scale-[1.01] active:scale-[0.99] cursor-pointer block select-none"
           >
             {/* Texto de Alerta da Fita */}
             <div className="flex items-center gap-2.5 text-center sm:text-left">
@@ -235,11 +235,11 @@ export const MoldesCarouselSection: React.FC<MoldesCarouselSectionProps> = ({ on
               </div>
 
               <div className="hidden md:flex items-center gap-1 text-xs font-bold text-slate-950 bg-white/40 px-3 py-1.5 rounded-xl border border-slate-950/10">
-                <span>Garantir</span>
+                <span>QUERO MEU PACOTE PREMIUM</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>

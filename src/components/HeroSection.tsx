@@ -37,14 +37,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToOffers }) =>
 
           {/* CTA directly below the mockup */}
           <div className="mt-6 sm:mt-8 space-y-3">
-            <button
-              onClick={onScrollToOffers}
-              className="w-full py-4 sm:py-5 px-6 sm:px-8 text-base sm:text-lg font-bold text-white bg-[#15803D] hover:bg-[#166534] rounded-2xl shadow-xl shadow-emerald-900/20 hover:shadow-emerald-900/30 transition-all flex items-center justify-center gap-3 cursor-pointer group uppercase tracking-wide"
+            <a
+              href="https://pay.wiapy.com/8mJj6lBTqYZo"
+              className="w-full py-4 sm:py-5 px-6 sm:px-8 text-base sm:text-lg font-bold text-white bg-[#15803D] hover:bg-[#166534] rounded-2xl shadow-xl shadow-emerald-900/20 hover:shadow-emerald-900/30 transition-all flex items-center justify-center gap-3 cursor-pointer group uppercase tracking-wide text-center select-none"
             >
               <Sparkles className="w-5 h-5 text-amber-200 group-hover:rotate-12 transition-transform" />
-              <span>Quero Garantir Meu Pacote Premium</span>
+              <span>QUERO MEU PACOTE PREMIUM</span>
               <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
 
             {/* Micro trust row below CTA */}
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-500 pt-1">

@@ -74,13 +74,13 @@ export const FeedbacksSection: React.FC<FeedbacksSectionProps> = ({ onCtaClick, 
 
         {/* Green CTA Button for Feedbacks Section */}
         <div className="text-center pt-2">
-          <button
-            onClick={onCtaClick}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 text-sm sm:text-base font-bold text-white bg-[#15803D] hover:bg-[#166534] rounded-xl transition-all shadow-lg shadow-emerald-900/20 cursor-pointer"
+          <a
+            href="https://pay.wiapy.com/8mJj6lBTqYZo"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 text-sm sm:text-base font-bold text-white bg-[#15803D] hover:bg-[#166534] rounded-xl transition-all shadow-lg shadow-emerald-900/20 cursor-pointer text-center select-none"
           >
-            <span>Quero Garantir Meu Pacote Premium Agora</span>
+            <span>QUERO MEU PACOTE PREMIUM</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </a>
           <p className="text-xs text-slate-500 mt-2">
             Acesso digital imediato aos +250 moldes e 5 bônus exclusivos.
           </p>

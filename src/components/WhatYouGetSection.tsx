@@ -182,14 +182,14 @@ export const WhatYouGetSection: React.FC<WhatYouGetSectionProps> = ({ onCtaClick
 
           {/* Green CTA Button */}
           <div className="pt-4 text-center">
-            <button
-              onClick={onCtaClick}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 text-sm sm:text-base font-bold text-white bg-[#15803D] hover:bg-[#166534] rounded-xl transition-all shadow-lg shadow-emerald-900/20 cursor-pointer"
+            <a
+              href="https://pay.wiapy.com/8mJj6lBTqYZo"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 text-sm sm:text-base font-bold text-white bg-[#15803D] hover:bg-[#166534] rounded-xl transition-all shadow-lg shadow-emerald-900/20 cursor-pointer text-center select-none"
             >
               <Sparkles className="w-4 h-4 text-amber-300" />
-              <span>Quero Garantir o Pacote Premium (+250 Moldes)</span>
+              <span>QUERO MEU PACOTE PREMIUM</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
       </div>
