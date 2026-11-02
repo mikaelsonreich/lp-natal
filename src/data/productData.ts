@@ -201,14 +201,33 @@ export const BONUSES: BonusItem[] = [
 ];
 
 export const CHECKOUT_URL = 'https://pay.wiapy.com/8mJj6lBTqYZo';
+export const CHECKOUT_URL_BASICO = 'https://pay.wiapy.com/remPpwM5NUgb';
 
 export const PRICING_PLANS: PricingPlan[] = [
+  {
+    id: 'basico',
+    name: 'Pacote Básico',
+    isPopular: false,
+    price: 'R$ 10,00',
+    originalPrice: 'R$ 97,00',
+    popularityNote: 'OPÇÃO ECONÔMICA',
+    description: 'A coleção essencial com todos os moldes e guia passo a passo para começar a bordar no papel.',
+    features: [
+      '+250 Moldes',
+      'Guia de Bordado em Papel',
+      'Arquivos em PDF Alta Definição',
+      'Acesso Vitalício',
+      'Acesso Imediato no seu E-mail após o pagamento',
+    ],
+    ctaText: 'QUERO PACOTE BÁSICO',
+    checkoutUrl: CHECKOUT_URL_BASICO,
+  },
   {
     id: 'premium',
     name: 'Pacote Premium + Videos',
     badge: 'OFERTA EXCLUSIVA',
     isPopular: true,
-    price: 'R$ 10,00',
+    price: 'R$ 15,00',
     originalPrice: 'R$ 197,00',
     popularityNote: 'COMPRADO POR +1276 PESSOAS',
     description: 'A coleção definitiva com todos os 250+ moldes, +30 videoaulas de ponto-guia e todos os 5 bônus inclusos.',
