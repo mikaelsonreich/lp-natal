@@ -37,12 +37,43 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToOffers }) =>
 
           {/* CTA directly below the mockup */}
           <div className="mt-6 sm:mt-8 space-y-3">
+            {/* Contador estático de vagas com bônus em destaque */}
+            <div className="p-3.5 rounded-xl bg-amber-50/90 border-2 border-amber-300/90 shadow-sm space-y-2 text-left">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 text-xs">
+                <span className="flex items-center gap-1.5 text-red-600 font-extrabold uppercase tracking-wide text-[11px] sm:text-xs">
+                  <span className="relative flex h-2.5 w-2.5 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
+                  </span>
+                  <span>Últimas Vagas Disponíveis</span>
+                </span>
+
+                <span className="font-bold text-red-700 bg-red-100/90 border border-red-300 px-2.5 py-1 rounded-md text-xs sm:text-[13px] tracking-tight">
+                  (96% das vagas com bônus preenchidas)
+                </span>
+              </div>
+
+              {/* Barra de progresso com indicador 96% */}
+              <div className="space-y-1">
+                <div className="w-full bg-stone-200/90 rounded-full h-3 overflow-hidden p-0.5 border border-stone-300/70">
+                  <div
+                    className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 h-full rounded-full transition-all duration-500 shadow-xs"
+                    style={{ width: '96%' }}
+                  ></div>
+                </div>
+                <div className="flex justify-between items-center text-[11px] font-semibold text-stone-600 px-0.5">
+                  <span>Preenchimento da turma</span>
+                  <span className="font-extrabold text-red-600">96%</span>
+                </div>
+              </div>
+            </div>
+
             <a
               href="https://pay.wiapy.com/8mJj6lBTqYZo"
               className="w-full py-4 sm:py-5 px-6 sm:px-8 text-base sm:text-lg font-bold text-white bg-[#15803D] hover:bg-[#166534] rounded-2xl shadow-xl shadow-emerald-900/20 hover:shadow-emerald-900/30 transition-all flex items-center justify-center gap-3 cursor-pointer group uppercase tracking-wide text-center select-none"
             >
               <Sparkles className="w-5 h-5 text-amber-200 group-hover:rotate-12 transition-transform" />
-              <span>QUERO MEU PACOTE PREMIUM</span>
+              <span>GARANTIR OFERTA DE R$10</span>
               <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
             </a>
 

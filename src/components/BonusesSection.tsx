@@ -102,7 +102,7 @@ export const BonusesSection: React.FC<BonusesSectionProps> = ({ onCtaClick }) =>
             className="px-6 py-3.5 text-xs sm:text-sm font-bold text-white bg-[#15803D] hover:bg-[#166534] border border-emerald-400/40 rounded-xl transition-all cursor-pointer shrink-0 shadow-lg shadow-emerald-950/30 flex items-center justify-center gap-2 text-center select-none"
           >
             <Gift className="w-4 h-4 text-white" />
-            <span>QUERO MEU PACOTE PREMIUM</span>
+            <span>QUERO MEU ACESSO COM TODOS OS BÔNUS</span>
             <ArrowRight className="w-4 h-4 text-white" />
           </a>
         </div>

@@ -235,7 +235,7 @@ export const MoldesCarouselSection: React.FC<MoldesCarouselSectionProps> = ({ on
               </div>
 
               <div className="hidden md:flex items-center gap-1 text-xs font-bold text-slate-950 bg-white/40 px-3 py-1.5 rounded-xl border border-slate-950/10">
-                <span>QUERO MEU PACOTE PREMIUM</span>
+                <span>GARANTIR MOLDES + BÔNUS EXCLUSIVOS</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </div>

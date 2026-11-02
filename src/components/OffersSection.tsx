@@ -146,11 +146,44 @@ export const OffersSection: React.FC<OffersSectionProps> = ({ onSelectPlan }) =>
                   </div>
                 </div>
 
+                {/* Contador estático de vagas com bônus em destaque */}
+                <div className="pt-4 pb-2">
+                  <div className="p-3.5 rounded-xl bg-amber-50/90 border-2 border-amber-300/90 shadow-sm space-y-2">
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 text-xs">
+                      <span className="flex items-center gap-1.5 text-red-600 font-extrabold uppercase tracking-wide text-[11px] sm:text-xs">
+                        <span className="relative flex h-2.5 w-2.5 shrink-0">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
+                        </span>
+                        <span>Últimas Vagas Disponíveis</span>
+                      </span>
+
+                      <span className="font-bold text-red-700 bg-red-100/90 border border-red-300 px-2.5 py-1 rounded-md text-xs sm:text-[13px] tracking-tight">
+                        (96% das vagas com bônus preenchidas)
+                      </span>
+                    </div>
+
+                    {/* Barra de progresso com indicador 96% */}
+                    <div className="space-y-1">
+                      <div className="w-full bg-stone-200/90 rounded-full h-3 overflow-hidden p-0.5 border border-stone-300/70">
+                        <div
+                          className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 h-full rounded-full w-[96%] transition-all duration-500 shadow-xs"
+                          style={{ width: '96%' }}
+                        ></div>
+                      </div>
+                      <div className="flex justify-between items-center text-[11px] font-semibold text-stone-600 px-0.5">
+                        <span>Preenchimento da turma</span>
+                        <span className="font-extrabold text-red-600">96%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 {/* CTA Button */}
-                <div className="pt-4">
+                <div className="pt-2">
                   <a
                     href={plan.checkoutUrl || 'https://pay.wiapy.com/8mJj6lBTqYZo'}
-                    className="w-full py-4 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer bg-[#15803D] hover:bg-[#166534] text-white shadow-md shadow-emerald-900/20 text-center select-none"
+                    className="w-full py-4 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer bg-[#15803D] hover:bg-[#166534] text-white shadow-md shadow-emerald-900/20 text-center select-none uppercase tracking-wide"
                   >
                     {isFeatured && <Sparkles className="w-4 h-4 text-amber-200" />}
                     <span>{plan.ctaText}</span>

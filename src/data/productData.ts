@@ -226,7 +226,7 @@ export const PRICING_PLANS: PricingPlan[] = [
       'Suporte Prioritário',
       'Garantia de 7 dias',
     ],
-    ctaText: 'QUERO MEU PACOTE PREMIUM',
+    ctaText: 'QUERO MEU ACESSO COM TODOS OS BÔNUS',
     checkoutUrl: CHECKOUT_URL,
   },
 ];

@@ -94,7 +94,7 @@ export default function App() {
                 className="w-full sm:w-auto px-8 py-4 text-sm sm:text-base font-bold text-white bg-[#15803D] hover:bg-[#166534] border border-emerald-400/40 rounded-xl transition-all shadow-xl shadow-emerald-950/40 flex items-center justify-center gap-2 cursor-pointer text-center"
               >
                 <Sparkles className="w-5 h-5 text-amber-200" />
-                <span>QUERO MEU PACOTE PREMIUM</span>
+                <span>GARANTIR MOLDES + BÔNUS EXCLUSIVOS</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </a>
             </div>

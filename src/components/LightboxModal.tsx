@@ -88,7 +88,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({ item, customImage,
                 className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#15803D] hover:bg-[#166534] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md text-center select-none"
               >
                 <Sparkles className="w-4 h-4 text-amber-200" />
-                <span>QUERO MEU PACOTE PREMIUM</span>
+                <span>GARANTIR MOLDES + BÔNUS EXCLUSIVOS</span>
               </a>
             </div>
           </div>
