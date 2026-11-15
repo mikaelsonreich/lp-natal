@@ -6,7 +6,7 @@ interface OffersSectionProps {
   onSelectPlan?: (plan: PricingPlan) => void;
 }
 
-export const OffersSection: React.FC<OffersSectionProps> = () => {
+export const OffersSection: React.FC<OffersSectionProps> = ({ onSelectPlan }) => {
   return (
     <section id="ofertas" className="py-16 md:py-24 bg-[#F8FAFC] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -206,8 +206,7 @@ export const OffersSection: React.FC<OffersSectionProps> = () => {
                               style={{ width: '96%' }}
                             ></div>
                           </div>
-                          <div className="flex justify-between items-center text-[11px] font-semibold text-stone-600 px-0.5">
-                            <span>Preenchimento da turma</span>
+                          <div className="flex justify-end items-center text-[11px] font-semibold text-stone-600 px-0.5">
                             <span className="font-extrabold text-red-600">96%</span>
                           </div>
                         </div>
@@ -228,14 +227,15 @@ export const OffersSection: React.FC<OffersSectionProps> = () => {
                         <ArrowRight className="w-4 h-4" />
                       </a>
                     ) : (
-                      // CTA Sem Destaque para o Pacote Básico
-                      <a
-                        href={plan.checkoutUrl || 'https://pay.wiapy.com/remPpwM5NUgb'}
+                      // CTA Sem Destaque para o Pacote Básico (abre pop-up de upsell)
+                      <button
+                        type="button"
+                        onClick={() => onSelectPlan?.(plan)}
                         className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer bg-slate-700 hover:bg-slate-800 text-white shadow-xs text-center select-none uppercase tracking-wide border border-slate-600/30"
                       >
                         <span>{plan.ctaText}</span>
                         <ArrowRight className="w-4 h-4 text-slate-300" />
-                      </a>
+                      </button>
                     )}
 
                     <div className="flex items-center justify-center gap-3 text-[11px] text-stone-400 mt-3">

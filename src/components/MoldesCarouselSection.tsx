@@ -221,7 +221,7 @@ export const MoldesCarouselSection: React.FC<MoldesCarouselSectionProps> = ({ on
                   APROVEITE O PREÇO PROMOCIONAL POR TEMPO LIMITADO
                 </p>
                 <p className="text-[11px] sm:text-xs font-semibold text-slate-900/80">
-                  Oferta de Natal com moldes a partir de apenas R$ 10,00
+                  Oferta de Natal com Bônus R$19,90 apenas hoje!
                 </p>
               </div>
             </div>

@@ -61,8 +61,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToOffers }) =>
                     style={{ width: '96%' }}
                   ></div>
                 </div>
-                <div className="flex justify-between items-center text-[11px] font-semibold text-stone-600 px-0.5">
-                  <span>Preenchimento da turma</span>
+                <div className="flex justify-end items-center text-[11px] font-semibold text-stone-600 px-0.5">
                   <span className="font-extrabold text-red-600">96%</span>
                 </div>
               </div>
@@ -73,7 +72,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToOffers }) =>
               className="w-full py-4 sm:py-5 px-6 sm:px-8 text-base sm:text-lg font-bold text-white bg-[#15803D] hover:bg-[#166534] rounded-2xl shadow-xl shadow-emerald-900/20 hover:shadow-emerald-900/30 transition-all flex items-center justify-center gap-3 cursor-pointer group uppercase tracking-wide text-center select-none"
             >
               <Sparkles className="w-5 h-5 text-amber-200 group-hover:rotate-12 transition-transform" />
-              <span>GARANTIR OFERTA DE R$15</span>
+              <span>GARANTIR OFERTA COM BÔNUS</span>
               <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
             </a>
 

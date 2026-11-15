@@ -10,12 +10,14 @@ import { GuaranteeSection } from './components/GuaranteeSection';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { LightboxModal } from './components/LightboxModal';
-import { MoldeItem, PricingPlan, PRICING_PLANS } from './data/productData';
+import { UpsellModal } from './components/UpsellModal';
+import { MoldeItem } from './data/productData';
 import { Sparkles, ArrowRight, ShieldCheck, Gift } from 'lucide-react';
 
 export default function App() {
   const [lightboxItem, setLightboxItem] = useState<MoldeItem | null>(null);
   const [customLightboxImage, setCustomLightboxImage] = useState<{ src: string; title: string } | null>(null);
+  const [isUpsellOpen, setIsUpsellOpen] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -56,7 +58,9 @@ export default function App() {
         {/* 5. Ofertas */}
         <OffersSection
           onSelectPlan={(plan) => {
-            if (plan.checkoutUrl) {
+            if (plan.id === 'basico') {
+              setIsUpsellOpen(true);
+            } else if (plan.checkoutUrl) {
               window.location.href = plan.checkoutUrl;
             }
           }}
@@ -125,6 +129,12 @@ export default function App() {
           setCustomLightboxImage(null);
         }}
         onCtaClick={handleOpenVipCheckout}
+      />
+
+      {/* Upsell Modal ao clicar no Pacote Básico */}
+      <UpsellModal
+        isOpen={isUpsellOpen}
+        onClose={() => setIsUpsellOpen(false)}
       />
     </div>
   );

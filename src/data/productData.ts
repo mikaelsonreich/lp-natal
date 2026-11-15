@@ -227,7 +227,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     name: 'Pacote Premium + Videos',
     badge: 'OFERTA EXCLUSIVA',
     isPopular: true,
-    price: 'R$ 15,00',
+    price: 'R$ 19,90',
     originalPrice: 'R$ 197,00',
     popularityNote: 'COMPRADO POR +1276 PESSOAS',
     description: 'A coleção definitiva com todos os 250+ moldes, +30 videoaulas de ponto-guia e todos os 5 bônus inclusos.',
