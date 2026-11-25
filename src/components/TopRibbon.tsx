@@ -32,9 +32,9 @@ export const TopRibbon: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-[#E53935] text-white h-10 px-4 flex items-center justify-center font-bold text-xs sm:text-sm tracking-wide shadow-sm select-none">
-      <div className="flex items-center gap-1.5 uppercase font-sans">
-        <span role="img" aria-label="relógio" className="text-sm">⏰</span>
+    <div className="fixed top-0 left-0 right-0 z-50 bg-[#E53935] text-white h-12 px-4 flex items-center justify-center font-bold text-sm sm:text-base tracking-wide shadow-sm select-none">
+      <div className="flex items-center gap-2 uppercase font-sans">
+        <span role="img" aria-label="relógio" className="text-base sm:text-lg">⏰</span>
         <span>OFERTA DISPONÍVEL APENAS HOJE ({currentDate})</span>
       </div>
     </div>

@@ -10,14 +10,12 @@ import { GuaranteeSection } from './components/GuaranteeSection';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { LightboxModal } from './components/LightboxModal';
-import { UpsellModal } from './components/UpsellModal';
 import { MoldeItem } from './data/productData';
 import { Sparkles, ArrowRight, ShieldCheck, Gift } from 'lucide-react';
 
 export default function App() {
   const [lightboxItem, setLightboxItem] = useState<MoldeItem | null>(null);
   const [customLightboxImage, setCustomLightboxImage] = useState<{ src: string; title: string } | null>(null);
-  const [isUpsellOpen, setIsUpsellOpen] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,7 +33,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-red-100 selection:text-red-950 flex flex-col pt-10">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-red-100 selection:text-red-950 flex flex-col pt-12">
       {/* 0. Fixed Red Ribbon (stays fixed while browsing entire site) */}
       <TopRibbon />
 
@@ -56,15 +54,7 @@ export default function App() {
         <FeedbacksSection onCtaClick={scrollToOffers} />
 
         {/* 5. Ofertas */}
-        <OffersSection
-          onSelectPlan={(plan) => {
-            if (plan.id === 'basico') {
-              setIsUpsellOpen(true);
-            } else if (plan.checkoutUrl) {
-              window.location.href = plan.checkoutUrl;
-            }
-          }}
-        />
+        <OffersSection />
 
         {/* Garantia Incondicional */}
         <GuaranteeSection onCtaClick={scrollToOffers} />
@@ -84,12 +74,12 @@ export default function App() {
             </h2>
 
             <p className="text-emerald-100 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed flex items-center justify-center gap-1.5 flex-wrap">
-              <span>Receba acesso imediato a todos os +250 moldes,</span>
+              <span>Receba acesso imediato a todos os +250 moldes e</span>
               <span className="text-amber-300 font-bold inline-flex items-center gap-1 bg-white/10 px-2 py-0.5 rounded-md border border-amber-300/30">
                 <Gift className="w-3.5 h-3.5 text-amber-300" />
                 <span>5 Bônus Exclusivos</span>
               </span>
-              <span>e +30 videoaulas de ponto-guia. Comece agora mesmo no conforto da sua casa.</span>
+              <span>. Comece agora mesmo no conforto da sua casa.</span>
             </p>
 
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -129,12 +119,6 @@ export default function App() {
           setCustomLightboxImage(null);
         }}
         onCtaClick={handleOpenVipCheckout}
-      />
-
-      {/* Upsell Modal ao clicar no Pacote Básico */}
-      <UpsellModal
-        isOpen={isUpsellOpen}
-        onClose={() => setIsUpsellOpen(false)}
       />
     </div>
   );

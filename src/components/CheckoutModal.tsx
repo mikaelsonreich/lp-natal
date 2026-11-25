@@ -71,7 +71,6 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ plan, onClose }) =
                       <Gift className="w-3 h-3 text-[#15803D]" />
                       <span>5 Bônus Exclusivos</span>
                     </span>
-                    <span>+ 30 Videoaulas de Ponto-Guia</span>
                   </p>
                 )}
               </div>

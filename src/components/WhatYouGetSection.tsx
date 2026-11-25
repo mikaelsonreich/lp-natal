@@ -1,92 +1,120 @@
-import React, { useState } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowRight, Check, Sparkles } from 'lucide-react';
 
 interface WhatYouGetSectionProps {
   onCtaClick?: () => void;
   onPreviewImage?: (src: string, title: string) => void;
 }
 
-interface ShowcaseItem {
+interface CardShowcaseItem {
   id: number;
   src: string;
   alt: string;
-  caption: string;
 }
 
-const SHOWCASE_IMAGES: ShowcaseItem[] = [
+interface IncludedBenefitItem {
+  title: string;
+  description: string;
+}
+
+const INCLUDED_BENEFITS: IncludedBenefitItem[] = [
   {
-    id: 1,
-    src: '/assets/aistudio/Bordado_de_Natal_em_Papel_52314e1b.png',
-    alt: 'Coleção completa de moldes impressos em português e cartões natalinos bordados',
-    caption: 'Coleção de Moldes Impressos & 8 Modelos de Cartões Bordados',
+    title: '+250 moldes de Natal em folha A4:',
+    description: 'Cartões, enfeites e lembrancinhas para escolher o presente certo para cada pessoa da família.',
   },
   {
-    id: 2,
-    src: '/assets/aistudio/Gemini_Generated_Image_bdr227bdr227bdr2_4d7982e9.jpg',
-    alt: 'Cartão de Árvore de Natal geométrica bordada com estrela dourada',
-    caption: 'Cartão Árvore de Natal com Fios Verdes e Estrela Dourada',
+    title: 'Furos-guia já marcados:',
+    description: 'Você não precisa de mão firme nem de talento. É só seguir os furinhos, ponto a ponto.',
   },
   {
-    id: 3,
-    src: '/assets/aistudio/Gemini_Generated_Image_cny4i2cny4i2cny4_3986d1b6.jpg',
-    alt: 'Cartão Estrela Dourada Pendente com lettering Boas Festas',
-    caption: 'Cartão Estrela Pendente com Fios Dourados & Boas Festas',
+    title: 'Guias de bordado passo a passo:',
+    description: 'Aprenda os pontos do zero e borde com confiança, mesmo que nunca tenha pegado uma agulha.',
   },
   {
-    id: 4,
-    src: '/assets/aistudio/Gemini_Generated_Image_9pu1ts9pu1ts9pu1_f49041c9.jpg',
-    alt: 'Cartão Bola de Natal com detalhes em verde, vermelho e dourado',
-    caption: 'Cartão Bola de Natal Decorativa com Fios Natalinos',
+    title: 'Manuais de acabamento:',
+    description: 'Seu cartão fica com cara de presente de loja, pronto para entregar.',
   },
   {
-    id: 5,
-    src: '/assets/aistudio/Gemini_Generated_Image_yix0yryix0yryix0_31bea31f.jpg',
-    alt: 'Cartão Coração Natalino bordado com estrela e ramos',
-    caption: 'Cartão Coração Natalino com Ponto Teia e Ramos',
-  },
-  {
-    id: 6,
-    src: '/assets/aistudio/Gemini_Generated_Image_vkbl50vkbl50vkbl_ec4c305d.jpg',
-    alt: 'Cartão Caixa de Presente de Natal bordada com laço e azevinho',
-    caption: 'Cartão Caixa de Presente com Laço Bordado e Azevinho',
+    title: 'Acesso imediato:',
+    description: 'Receba, imprima e comece hoje mesmo.',
   },
 ];
 
-export const WhatYouGetSection: React.FC<WhatYouGetSectionProps> = ({ onCtaClick }) => {
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+const CARD_PHOTOS: CardShowcaseItem[] = [
+  {
+    id: 1,
+    src: '/assets/aistudio/cartao_estrela_9x16_36162a03.png',
+    alt: 'Cartão natalino bordado em papel com estrela dourada e Boas Festas',
+  },
+  {
+    id: 2,
+    src: '/assets/aistudio/cartao_natal_presente_9x16_8348779f.png',
+    alt: 'Cartão natalino bordado em papel com caixa de presente e azevinho',
+  },
+  {
+    id: 3,
+    src: '/assets/aistudio/cartao_coracao_pinheiros_9x16_2e8f83f2.png',
+    alt: 'Cartão natalino bordado em papel com coração vermelho, estrela dourada e ramos',
+  },
+  {
+    id: 4,
+    src: '/assets/aistudio/cartao_arvore_estrelas_9x16_26f22323.png',
+    alt: 'Cartão natalino bordado em papel com árvore de Natal estrelada e Feliz Natal',
+  },
+  {
+    id: 5,
+    src: '/assets/aistudio/cartao_natal_9x16_78c95e35.png',
+    alt: 'Cartão natalino bordado em papel com Papai Noel carregando presentes',
+  },
+  {
+    id: 6,
+    src: '/assets/aistudio/cartao_papai_noel_9x16__2__96cfe77c.png',
+    alt: 'Cartão natalino bordado em papel com Papai Noel minimalista',
+  },
+];
 
-  const total = SHOWCASE_IMAGES.length;
+const ShowcaseCard: React.FC<{ item: CardShowcaseItem }> = ({ item }) => (
+  <div className="shrink-0 w-[205px] sm:w-[230px] md:w-[250px] rounded-2xl overflow-hidden border border-stone-200/90 shadow-lg bg-white">
+    <div className="aspect-[9/16] w-full overflow-hidden bg-stone-100">
+      <img
+        src={item.src}
+        alt={item.alt}
+        className="w-full h-full object-cover"
+        referrerPolicy="no-referrer"
+      />
+    </div>
+  </div>
+);
 
-  const handlePrev = () => {
-    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : total - 1));
-  };
+export const WhatYouGetSection: React.FC<WhatYouGetSectionProps> = () => {
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const [cardsVisible, setCardsVisible] = useState(false);
 
-  const handleNext = () => {
-    setCurrentSlide((prev) => (prev < total - 1 ? prev + 1 : 0));
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX === null) return;
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (diff > 40) {
-      handleNext();
-    } else if (diff < -40) {
-      handlePrev();
+  useEffect(() => {
+    const el = cardsRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setCardsVisible(true);
+      return;
     }
-    setTouchStartX(null);
-  };
 
-  const currentItem = SHOWCASE_IMAGES[currentSlide];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setCardsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="o-que-receber" className="py-16 md:py-24 bg-white border-y border-stone-200/70">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+    <section id="o-que-receber" className="py-16 md:py-24 bg-white border-y border-stone-200/70 overflow-hidden">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header (subheadline removed) */}
         <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
           <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#800020]">
             <span>Material Completo em PDF</span>
@@ -97,83 +125,57 @@ export const WhatYouGetSection: React.FC<WhatYouGetSectionProps> = ({ onCtaClick
           <h2 className="font-serif text-3xl sm:text-4xl text-stone-900 font-bold tracking-tight text-balance">
             O Que Você Vai Receber
           </h2>
-
-          <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
-            Receba uma coleção exclusiva de +250 moldes em folha A4, com furos-guia para facilitar cada ponto, além de guias de bordado que ajudam você a transformar papel, linha e agulha em criações encantadoras.
-          </p>
         </div>
 
-        {/* Interactive Showcase Carousel */}
-        <div className="space-y-4">
-          <div
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-            className="relative rounded-3xl overflow-hidden border border-stone-200/90 shadow-2xl bg-stone-950 aspect-[4/3] sm:aspect-[16/11] md:aspect-[3/2] flex items-center justify-center group select-none"
-          >
-            {/* Blurred ambient background based on current image */}
-            <img
-              src={currentItem.src}
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-35 scale-110 pointer-events-none transition-all duration-500"
-            />
-
-            {/* Main Current Slide Image */}
-            <img
-              key={currentItem.id}
-              src={currentItem.src}
-              alt={currentItem.alt}
-              className="relative z-10 w-full h-full object-contain p-1 sm:p-2 transition-opacity duration-300"
-              referrerPolicy="no-referrer"
-            />
-
-            {/* Navigation Button Left */}
-            <button
-              onClick={handlePrev}
-              aria-label="Foto anterior"
-              className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white text-stone-900 shadow-xl border border-stone-200/80 hover:scale-105 active:scale-95 transition-all flex items-center justify-center cursor-pointer backdrop-blur-xs"
+        {/* Benefit Cards with Green Check & Thin Yellow Border */}
+        <div ref={cardsRef} className="max-w-3xl mx-auto mb-10 space-y-3.5">
+          {INCLUDED_BENEFITS.map((item, idx) => (
+            <div
+              key={item.title}
+              style={{ transitionDelay: cardsVisible ? `${idx * 90}ms` : '0ms' }}
+              className={`bg-white border border-[#F5B800] rounded-2xl p-4 sm:p-5 shadow-xs flex items-start gap-3.5 transition-all duration-500 ease-out ${
+                cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+              }`}
             >
-              <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
-            </button>
+              <span
+                aria-hidden="true"
+                className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#15803D] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs"
+              >
+                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]" />
+              </span>
 
-            {/* Navigation Button Right */}
-            <button
-              onClick={handleNext}
-              aria-label="Próxima foto"
-              className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white text-stone-900 shadow-xl border border-stone-200/80 hover:scale-105 active:scale-95 transition-all flex items-center justify-center cursor-pointer backdrop-blur-xs"
-            >
-              <ChevronRight className="w-6 h-6 stroke-[2.5]" />
-            </button>
-
-            {/* Top Right Counter Badge */}
-            <div className="absolute top-4 right-4 z-20 bg-stone-900/80 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm border border-white/10 shadow-md">
-              <span>{currentSlide + 1} de {total}</span>
+              <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+                <strong className="font-bold text-slate-900">{item.title}</strong>{' '}
+                <span>{item.description}</span>
+              </p>
             </div>
+          ))}
+        </div>
 
-            {/* Bottom Caption Pill */}
-            <div className="absolute bottom-4 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 z-20 bg-stone-900/85 text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-xl backdrop-blur-md border border-white/10 shadow-lg text-center max-w-lg">
-              <span className="line-clamp-1">{currentItem.caption}</span>
+        {/* Seamless Infinite Continuous Autoplay Carousel (unchanged below the cards) */}
+        <div className="space-y-6">
+          <div className="relative overflow-hidden py-3 select-none">
+            {/* Subtle left/right white edge fades */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 bg-gradient-to-l from-white to-transparent z-10" />
+
+            {/* Duplicated track for seamless infinite horizontal scrolling */}
+            <div className="flex w-max animate-marquee-cards">
+              <div className="flex shrink-0 items-stretch gap-4 sm:gap-6 pr-4 sm:pr-6">
+                {CARD_PHOTOS.map((item) => (
+                  <ShowcaseCard key={`a-${item.id}`} item={item} />
+                ))}
+              </div>
+              <div className="flex shrink-0 items-stretch gap-4 sm:gap-6 pr-4 sm:pr-6" aria-hidden="true">
+                {CARD_PHOTOS.map((item) => (
+                  <ShowcaseCard key={`b-${item.id}`} item={item} />
+                ))}
+              </div>
             </div>
-          </div>
-
-          {/* Dots Indicator Below Frame */}
-          <div className="flex items-center justify-center gap-2 pt-1">
-            {SHOWCASE_IMAGES.map((item, dotIdx) => (
-              <button
-                key={item.id}
-                onClick={() => setCurrentSlide(dotIdx)}
-                aria-label={`Ir para foto ${dotIdx + 1}`}
-                className={`transition-all rounded-full cursor-pointer ${
-                  dotIdx === currentSlide
-                    ? 'w-7 h-2.5 bg-[#15803D]'
-                    : 'w-2.5 h-2.5 bg-stone-300 hover:bg-stone-400'
-                }`}
-              />
-            ))}
           </div>
 
           {/* Quick explanation box */}
-          <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200/70 text-xs sm:text-sm text-amber-950 flex items-start gap-3">
+          <div className="max-w-4xl mx-auto p-4 rounded-2xl bg-amber-50/70 border border-amber-200/70 text-xs sm:text-sm text-amber-950 flex items-start gap-3">
             <span className="font-serif text-lg font-bold text-amber-800 leading-none">✦</span>
             <p>
               <strong>Você não precisa redesenhar nada:</strong> cada molde já vem com a furação indicada, garantindo que suas linhas fiquem sempre retas, com simetria milimétrica.
@@ -181,7 +183,7 @@ export const WhatYouGetSection: React.FC<WhatYouGetSectionProps> = ({ onCtaClick
           </div>
 
           {/* Green CTA Button */}
-          <div className="pt-4 text-center">
+          <div className="pt-2 text-center">
             <a
               href="https://pay.wiapy.com/8mJj6lBTqYZo"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 text-sm sm:text-base font-bold text-white bg-[#15803D] hover:bg-[#166534] rounded-xl transition-all shadow-lg shadow-emerald-900/20 cursor-pointer text-center select-none"

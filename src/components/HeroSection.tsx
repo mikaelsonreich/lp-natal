@@ -1,71 +1,44 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Download, Sparkles } from 'lucide-react';
+import { VacancyCounter } from './VacancyCounter';
 
 interface HeroSectionProps {
   onScrollToOffers: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToOffers }) => {
-  const mockupImage = '/assets/aistudio/FRONT-Natal_c86948a5.png';
-
+export const HeroSection: React.FC<HeroSectionProps> = () => {
   return (
     <section id="hero" className="pt-8 pb-16 md:pt-12 md:pb-20 bg-gradient-to-b from-[#FFFDF9] via-[#F8FAFC] to-[#F8FAFC] overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Main Headline */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-slate-900 tracking-tight leading-[1.18] text-balance mb-4">
-          +250 Moldes de Natal para Bordados de Papel
+        <h1 className="text-2xl sm:text-4xl md:text-[2.65rem] lg:text-[2.9rem] font-bold text-slate-900 tracking-tight leading-[1.22] text-balance mb-8 sm:mb-10">
+          <span className="bg-[#86EFAC]/80 text-emerald-950 px-2 py-0.5 rounded-md box-decoration-clone">
+            +250 Moldes
+          </span>{' '}
+          de Natal prontos para imprimir, com guias e manuais que levam você do zero ao presente perfeito.
         </h1>
-
-        {/* Short Subheadline */}
-        <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 text-balance font-normal">
-          Receba moldes em PDF prontos para imprimir e bordar cartões, enfeites e lembrancinhas de luxo em casa.
-        </p>
 
         {/* Mockup Card Container - matching reference image */}
         <div className="relative max-w-2xl mx-auto">
           <div className="relative bg-white rounded-3xl p-2 sm:p-3 border border-slate-200/90 shadow-2xl shadow-slate-300/40 transition-all overflow-hidden">
-            {/* Mockup Image Frame with 1:1 Aspect Ratio matching the artwork */}
+            {/* Mockup Video Frame with 1:1 Aspect Ratio matching the artwork */}
             <div className="relative rounded-2xl overflow-hidden bg-stone-900 aspect-square flex items-center justify-center">
-              <img
-                src={mockupImage}
-                alt="Mockup Oficial +250 Moldes de Natal para Bordados de Papel"
+              <video
+                src="/hero-produto.webm"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label="Vídeo Oficial +250 Moldes de Natal para Bordados de Papel"
                 className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
               />
             </div>
           </div>
 
           {/* CTA directly below the mockup */}
           <div className="mt-6 sm:mt-8 space-y-3">
-            {/* Contador estático de vagas com bônus em destaque */}
-            <div className="p-3.5 rounded-xl bg-amber-50/90 border-2 border-amber-300/90 shadow-sm space-y-2 text-left">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 text-xs">
-                <span className="flex items-center gap-1.5 text-red-600 font-extrabold uppercase tracking-wide text-[11px] sm:text-xs">
-                  <span className="relative flex h-2.5 w-2.5 shrink-0">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
-                  </span>
-                  <span>Últimas Vagas Disponíveis</span>
-                </span>
-
-                <span className="font-bold text-red-700 bg-red-100/90 border border-red-300 px-2.5 py-1 rounded-md text-xs sm:text-[13px] tracking-tight">
-                  (96% das vagas com bônus preenchidas)
-                </span>
-              </div>
-
-              {/* Barra de progresso com indicador 96% */}
-              <div className="space-y-1">
-                <div className="w-full bg-stone-200/90 rounded-full h-3 overflow-hidden p-0.5 border border-stone-300/70">
-                  <div
-                    className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 h-full rounded-full transition-all duration-500 shadow-xs"
-                    style={{ width: '96%' }}
-                  ></div>
-                </div>
-                <div className="flex justify-end items-center text-[11px] font-semibold text-stone-600 px-0.5">
-                  <span className="font-extrabold text-red-600">96%</span>
-                </div>
-              </div>
-            </div>
+            <VacancyCounter />
 
             <a
               href="https://pay.wiapy.com/8mJj6lBTqYZo"

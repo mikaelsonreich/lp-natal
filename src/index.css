@@ -28,3 +28,54 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #B8B09E;
 }
+
+/* Continuous seamless horizontal carousel */
+@keyframes marquee-moldes {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-moldes {
+  animation: marquee-moldes 12s linear infinite;
+  will-change: transform;
+}
+
+/* Shimmer pass animation for vacancy progress bar */
+@keyframes vacancy-shimmer {
+  0% {
+    transform: translateX(-140%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(360%) skewX(-20deg);
+  }
+}
+
+.animate-vacancy-shimmer {
+  animation: vacancy-shimmer 2.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-marquee-cards {
+  animation: marquee-moldes 22s linear infinite;
+  will-change: transform;
+}
+
+/* Gleaming shimmer pass for yellow bonus card */
+@keyframes card-shimmer {
+  0% {
+    transform: translateX(-160%) skewX(-22deg);
+  }
+  55%, 100% {
+    transform: translateX(340%) skewX(-22deg);
+  }
+}
+
+.animate-card-shimmer {
+  animation: card-shimmer 3.2s ease-in-out infinite;
+  will-change: transform;
+}
+
